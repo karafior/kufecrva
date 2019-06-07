@@ -1,0 +1,23 @@
+# The number of masters and nodes to provision
+num_masters: 1
+num_nodes: 1
+
+# Determine the OS platform to use
+os_image: "fedora/30-cloud-base"
+
+# Define the number of CPUs
+vm_master_cpus: 2
+vm_node_cpus: 2
+
+# Define the ammount of RAM
+vm_master_mem: 1024
+vm_node_mem: 2048
+
+# Define the kubeadm token used for joining the cluster
+kubeadm_token: "abcdef.0123456789abcdef"
+
+# Ignore master certificate verification when joining the cluster
+skip_ca_verification: true
+
+# Define the subnet for CNI
+pod_network_cidr: "10.244.0.0/16"
