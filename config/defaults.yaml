@@ -10,7 +10,7 @@ vm_master_cpus: 2
 vm_node_cpus: 2
 
 # Define the ammount of RAM
-vm_master_mem: 1024
+vm_master_mem: 2048
 vm_node_mem: 2048
 
 # Define the kubeadm token used for joining the cluster

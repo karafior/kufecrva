@@ -20,9 +20,9 @@ dnf --assumeyes install \
   cri-o \
   cri-tools \
   conmon \
-  kubelet-1.13.6-0 \
-  kubeadm-1.13.6-0 \
-  kubectl-1.13.6-0 \
+  kubelet-1.13.10-0 \
+  kubeadm-1.13.10-0 \
+  kubectl-1.13.10-0 \
   kubernetes-cni
 
 # Enable and start required systemd units
