@@ -22,6 +22,9 @@ $num_nodes = (ENV['NUM_NODES'] || config["num_nodes"]).to_i
 # Determine the OS platform to use
 $os_image = ENV['OS_IMAGE'] || config["os_image"]
 
+# Kubernetes version to deploy
+$kube_version = ENV['KUBE_VERSION'] || config["kube_version"]
+
 # Define the number of CPUs
 $vm_master_cpus = (ENV['MASTER_CPUS'] || ENV['CPUS'] || config["vm_master_cpus"]).to_i
 $vm_node_cpus = (ENV['NODE_CPUS'] || ENV['CPUS'] || config["vm_node_cpus"]).to_i
@@ -81,6 +84,7 @@ def setup_kubelet(vm_instance)
   # Use shell provisioning to setup kubelet
   vm_instance.vm.provision "kubelet",
     type: "shell",
+    args: [$kube_version],
     path: "scripts/provision_kubelet.sh"
 
 end

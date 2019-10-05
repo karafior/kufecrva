@@ -5,6 +5,9 @@ num_nodes: 1
 # Determine the OS platform to use
 os_image: "fedora/30-cloud-base"
 
+# Kubernetes version to deploy
+kube_version: "1.13"
+
 # Define the number of CPUs
 vm_master_cpus: 2
 vm_node_cpus: 2
