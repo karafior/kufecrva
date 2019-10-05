@@ -41,11 +41,21 @@ $pod_network_cidr = (ENV['POD_NETWORK_CIDR'] || config["pod_network_cidr"])
 
 def configure_vm(vm_instance, vm_name, kubernetes_role)
   #vm_instance.vm.hostname = master_vm_name
-  vm_instance.vm.provider :libvirt do |domain|
-    if kubernetes_role == "master"
+  if kubernetes_role == "master"
+    vm_instance.vm.provider :libvirt do |domain|
       domain.memory = $vm_master_mem
       domain.cpus = $vm_master_cpus
-    elsif kubernetes_role == "node"
+    end
+    vm_instance.vm.provider :virtualbox do |domain|
+      domain.memory = $vm_master_mem
+      domain.cpus = $vm_master_cpus
+    end
+  elsif kubernetes_role == "node"
+    vm_instance.vm.provider :libvirt do |domain|
+      domain.memory = $vm_node_mem
+      domain.cpus = $vm_node_cpus
+    end
+    vm_instance.vm.provider :virtualbox do |domain|
       domain.memory = $vm_node_mem
       domain.cpus = $vm_node_cpus
     end
